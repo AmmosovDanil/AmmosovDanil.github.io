@@ -1,27 +1,20 @@
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main
-
+on: push
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: checkout
+        uses: action/checkout@v4
         with:
           submodules: 'true'
 
-      - name: Hugo Installation
-        run: |
+      - name: hugo installation
+        run:
           sudo apt-get update
-          sudo apt-get install -y hugo
-          hugo
-
-      - name: Deploy
+          && sudo apt-get install -y hugo
+          && sudo hugo
+     
+      - name: deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: public
-          branch: gh-pages
