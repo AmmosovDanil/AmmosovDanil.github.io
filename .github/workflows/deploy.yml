@@ -1,6 +1,9 @@
 on: push
 jobs:
   deploy:
+    permissions:
+      contents: read
+      pages: write
     runs-on: ubuntu-latest
     steps:
       - name: checkout
